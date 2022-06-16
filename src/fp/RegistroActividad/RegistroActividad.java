@@ -34,8 +34,9 @@ public class RegistroActividad {
 		this.registroRuta=false;
 		
 	}
+	
 	//constructor 2
-	public RegistroActividad(String usuario,TipoActividad tipo,List<LocalDateTime> horas,
+	public RegistroActividad(String usuario,TipoActividad tipo,Boolean registroRuta, List<LocalDateTime> horas,
 			List<Coordenada> coordenadas,List<Double> alturas) {
 		Checkers.check("La listas horas,coordenadas y alturas deben tener el mismo numero "
 				+ "de elementos que debe ser >=2",
@@ -126,7 +127,7 @@ public class RegistroActividad {
 		for(Coordenada coord:this.coordenadas) {
 			Double d=coord.distancia(c);
 			if(d<=umbral) {
-				if(distRes==null  || distRes>d) {
+				if(distRes== null|| distRes>d) {
 					res=coord;
 					distRes=d;
 				}
