@@ -46,13 +46,13 @@ public class RegistrosUsuarios {
 	}
 	//EJERCICIO 2
 	
-//	public SortedMap<Integer,Long> totalDeMinutosPorActividad(String usuario){
-//		return registros.stream()
-//				.filter(r->r.getUsuario().equals(usuario))
-//				.collect(Collectors.groupingBy(r->UtilesFechas.getWeekOfYear(r.fecha()),
-//						TreeMap::new,Collectors.summingLong(r->r.duracion().toMinutes())));
+	public SortedMap<Integer,Long> totalDeMinutosPorActividad(String usuario){
+		return registros.stream()
+				.filter(r->r.getUsuario().equals(usuario))
+				.collect(Collectors.groupingBy(r->UtilesFechas.getWeekOfYear(r.fecha()),
+						TreeMap::new,Collectors.summingLong(r->r.duracion().toMinutes())));
 		
-//	}
+	}
 	//EJERCICIO 3
 	
 	public TipoActividad getTipoActividadMasPracticada() {
@@ -79,19 +79,19 @@ public class RegistrosUsuarios {
 	
 	//Ejercicio 4
 	
-//	public Boolean esUsuarioSaludableOMS(String usuario) {
-//		SortedMap<Integer,Long> actividad=totalDeMinutosPorActividad(usuario);
-//		SortedMap<Integer,Long> numActividades=totalDeMinutosPorActividad(usuario);
-//		
-//		return actividad.size()>=48 && actividad.entrySet().stream().allMatch(c->c.getValue()>=180L && numActividades.get(c.getKey())>=5L);
-//		
-//	}
+	public Boolean esUsuarioSaludableOMS(String usuario) {
+		SortedMap<Integer,Long> actividad=totalDeMinutosPorActividad(usuario);
+		SortedMap<Integer,Long> numActividades=totalDeMinutosPorActividad(usuario);
+		
+		return actividad.size()>=48 && actividad.entrySet().stream().allMatch(c->c.getValue()>=180L && numActividades.get(c.getKey())>=5L);
+		
+	}
 	
-//	public SortedMap<Integer,Long> getNumActividadesPorSemana(String usuario){
-//		return registros.stream()
-//				.filter(r->r.getUsuario().equals(usuario))
-//				.collect(Collectors.groupingBy(r->UtilesFechas.getWeekOfYear(r.fecha()),TreeMap::new,Collectors.counting()));
-//	}
+	public SortedMap<Integer,Long> getNumActividadesPorSemana(String usuario){
+		return registros.stream()
+				.filter(r->r.getUsuario().equals(usuario))
+				.collect(Collectors.groupingBy(r->UtilesFechas.getWeekOfYear(r.fecha()),TreeMap::new,Collectors.counting()));
+	}
 
 }
 
